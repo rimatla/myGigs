@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myGigsApp">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>myGigs</title>
+    <!--styles-->
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Monoton" />
+
+    <!--scripts-->
+    <script type=text/javascript src= vendor/angular/angular.min.js></script>
+    <script type=text/javascript src= vendor/angular-route/angular-route.min.js></script>
+    <script src="assets/scripts/client.min.js"></script>
+    <base href="/"/>
+</head>
+<body>
+<div class="page-header">
+    <h1>MyGigs</h1>
+</div>
+
+<div>
+    <a href="/newGig"><button class=" btnBlue pull-right btn btn-primary btn-lg btn-responsive">+ New Gig</button></a>
+</div>
+
+
+<div ng-view></div>
+
+</body>
+</html>

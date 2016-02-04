@@ -1,0 +1,69 @@
+<!--Home Button-->
+<div>
+    <a href="/home"><button class=" btnOrange pull-left btn btn-warning btn-lg btn-responsive">Home</button></a>
+</div>
+
+
+
+<!--scratch notes-->
+<h1 class = "addNew">Form to add new gigs</h1>
+
+
+
+
+<!--FORMS-->
+<form class ="styleForm" name="registrForm" role="form">
+    <div class="form-group">
+        <label>Group</label>
+        <input type="text" class="form-control" placeholder="group" required="required" ng-model="group">
+    </div>
+    <!--<div class="form-group">-->
+        <!--<label>Pay</label>-->
+        <!--<input class="form-control currency" type="number"  placeholder="$" ng-model="amount">-->
+        <!--<span class="money">{{amount | currency}}</span>-->
+    <!--</div>-->
+    <div class="form-group">
+        <label>Event Time</label>
+        <input type="datetime-local" class="form-control" placeholder="date" required="required" ng-model="eventTime">
+    </div>
+    <div class="form-group">
+        <label>End Time</label>
+        <input type="time" class="form-control" placeholder="end time" ng-model="endTime">
+    </div>
+    <div class="form-group">
+        <label>Gone Until</label>
+        <input type="date" class="form-control" placeholder="gone until">
+    </div>
+    <div class="form-group">
+        <label>To-do</label>
+        <input type="text" class="form-control" placeholder="to-do">
+    </div>
+<hr>
+     <!--Pay-->
+    <label>Pay</label>
+    <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <span class="input-group-addon">.00</span>
+    </div>
+
+    <!--radio buttons-->
+<hr>
+    <div class="form-group">
+        <label>Charts</label>
+        <div>
+        <label class="checkYes"><input type="radio" name="charts" value="value">Yes</label>
+        <label><input type="radio" name="charts" value="value">No</label>
+        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label>Per Diem</label>
+        <div>
+            <label class="checkYes"><input type="radio" name="perDiem" value="">Yes</label>
+            <label><input type="radio" name="perDiem" value="">No</label>
+        </div>
+    </div>
+</form>
+<button ng-click="reset()">Reset</button>
+
