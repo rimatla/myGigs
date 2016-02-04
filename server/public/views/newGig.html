@@ -12,10 +12,10 @@
 
 
 <!--FORMS-->
-<form class ="styleForm" name="registrForm" role="form">
+<form class ="styleForm">
     <div class="form-group">
         <label>Group</label>
-        <input type="text" class="form-control" placeholder="group" required="required" ng-model="group">
+        <input type="text" class="form-control" placeholder="group" required="required" ng-model="data.group">
     </div>
     <!--<div class="form-group">-->
         <!--<label>Pay</label>-->
@@ -24,26 +24,26 @@
     <!--</div>-->
     <div class="form-group">
         <label>Event Time</label>
-        <input type="datetime-local" class="form-control" placeholder="date" required="required" ng-model="eventTime">
+        <input type="datetime-local" class="form-control" placeholder="date" required="required" ng-model="data.eventTime">
     </div>
     <div class="form-group">
         <label>End Time</label>
-        <input type="time" class="form-control" placeholder="end time" ng-model="endTime">
+        <input type="time" class="form-control" placeholder="end time" ng-model="data.endTime">
     </div>
     <div class="form-group">
         <label>Gone Until</label>
-        <input type="date" class="form-control" placeholder="gone until">
+        <input type="date" class="form-control" placeholder="gone until" ng-model="data.goneUntil">
     </div>
     <div class="form-group">
         <label>To-do</label>
-        <input type="text" class="form-control" placeholder="to-do">
+        <input type="text" class="form-control" placeholder="to-do" ng-model="data.todo">
     </div>
 <hr>
      <!--Pay-->
     <label>Pay</label>
     <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="data.pay">
         <span class="input-group-addon">.00</span>
     </div>
 
@@ -52,18 +52,20 @@
     <div class="form-group">
         <label>Charts</label>
         <div>
-        <label class="checkYes"><input type="radio" name="charts" value="value">Yes</label>
-        <label><input type="radio" name="charts" value="value">No</label>
+        <label class="radioBtn"><input type="radio" name="charts" ng-model="data.yesCharts"  ng-value="true">Yes</label>
+        <label><input type="radio" name="charts" ng-model="data.noCharts" ng-value="true">No</label>
         </div>
     </div>
     <hr>
     <div class="form-group">
         <label>Per Diem</label>
         <div>
-            <label class="checkYes"><input type="radio" name="perDiem" value="">Yes</label>
-            <label><input type="radio" name="perDiem" value="">No</label>
+            <label class="radioBtn"><input type="radio" name="perDiem" ng-model="data.yesPDiem" ng-value="true">Yes</label>
+            <label><input type="radio" name="perDiem" ng-model="data.noPDiem" ng-value="true">No</label>
         </div>
     </div>
 </form>
+<button ng-click="sendData()">Send Data</button>
+<button ng-click="getData()">Get Data</button>
 <button ng-click="reset()">Reset</button>
 

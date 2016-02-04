@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     $routeProvider
         .when('/home', {
             templateUrl: 'views/home.html',
-            controller: 'MainController'
+            controller: 'HomeController'
         })
 
         .when('/newGig', {
@@ -21,17 +21,45 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 
 
 
-app.controller('homeController', ['$scope', '$http', '$location', function($scope, $http, $location){
-
+app.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location){
+    $http.get('/getAllGigs')
+        .then(function(response) {
+            console.log('Here is the home controller getting users:', response);
+            //console.log('getting users:', response.data[1].name);
+            $scope.data = response.data;
+        });
 
 }]);
 
 app.controller('newGigController', ['$scope', '$http', function($scope, $http){
 
+
+    $scope.sendData = function(){
+        console.log($scope.data);
+        $http.post('/addGig', $scope.data)
+            .then(function(response) {
+                //console.log('getting myGigs:', response.data);
+                //console.log('getting users:', response.data[1].name);
+                //$scope.data = response.data;
+            });
+    };
+
+    $scope.getData = function(){
+        console.log($scope.data);
+        $http.get('/getAllGigs')
+            .then(function(response) {
+                console.log('getting myGigs:', response.data);
+                //console.log('getting users:', response.data[1].name);
+                //$scope.data = response.data;
+            });
+    };
+
+
+
     $scope.reset = function(){
-        $scope.group = ' ',
-        $scope.eventTime = ' ',
-        $scope.endTime = ' '
+        $scope.group = '';
+        $scope.eventTime = '';
+        $scope.endTime = '';
 
     };
 
@@ -40,3 +68,4 @@ app.controller('newGigController', ['$scope', '$http', function($scope, $http){
 
 
 
+//We set up DB!
