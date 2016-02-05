@@ -28,19 +28,27 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 //controllers
 
 app.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location){
-
+        $scope.data = [ ];
     //Ajax call to get data from DB and send to home.html
     var fetchGigs = function() {
         $http.get('/getAllGigs')
             .then(function (response) {
                 console.log('Here is the home controller getting gigs:', response);
-                $scope.data = response.data;
+                $scope.gigs = response.data;
             });
     };
-    $scope.removeGig = function(gig){
-        console.log('This is the gig id', gig);
-        $http.delete('/selectedGig' + gig._id)
-            .then(fetchGigs);
+    $scope.removeSelectedGigs = function(){
+        //console.log('This is the gig id', gig);
+
+        for(var i = 0; i < $scope.gigs.length; i++){
+            if($scope.gigs[i].toRemove){
+                $http.delete('/hi' + $scope.gigs[i]._id)
+                    .then(fetchGigs);
+            }
+        }
+
+        //$http.delete('/selectedGig' + gig._id)
+        //    .then(fetchGigs);
     };
     fetchGigs();
 

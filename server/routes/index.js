@@ -39,7 +39,7 @@ router.get('/getAllGigs', function(request, response){
 });
 
 //delete selected gig
-router.delete('/selectedGig:id', function(request, response, next){
+router.delete('/hi:id', function(request, response, next){
     //response.send("Delete!");
     console.log(request.params.id);
     Gig.findByIdAndRemove(request.params.id, function (err, post) {
