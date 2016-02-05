@@ -4,8 +4,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-var UserSchema = new Schema({
+//schema matching ng-models
+var GigSchema = new Schema({
     group: {type: String},
     eventTime: {type: Date},
     endTime: {type: Date},
@@ -19,6 +19,9 @@ var UserSchema = new Schema({
 
 });
 
-var myGigs = mongoose.model('User', UserSchema);
+// models
+// var Gig equals bellow
+var myGigs = mongoose.model('Gig', GigSchema);
 
 module.exports = myGigs;
+

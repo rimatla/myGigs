@@ -18,6 +18,7 @@ app.use('/', index);
 
 
 // MONGO set-up
+// creates a DB
 var mongoURI = 'mongodb://localhost:27017/myGigs';
 var mongoDB = mongoose.connect(mongoURI).connection;
 

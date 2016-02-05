@@ -4,17 +4,17 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var User = require('../models/myGigs');
+var Gig = require('../models/myGigs');
 
 
-// get files from client side
-
-
+// carrying post data from client and taking over the wall to DB
 router.post('/addGig', function(request, response){
     console.log(request.body);
 
-    User.create(request.body, function(err, user){
-        console.log(user);
+    //mongoose creates a new object based on the schema to be sent to DB
+    //request.body = data from client
+    Gig.create(request.body, function(err, gig){
+        console.log(gig);
         if(err) {
             console.log(err);
         } else {
@@ -23,19 +23,23 @@ router.post('/addGig', function(request, response){
     });
 });
 
+// router taking data from DB over the wall back to client
 router.get('/getAllGigs', function(request, response){
     //console.log(request.body);
 
-    User.find({}, function(err, users){
-        console.log(users);
+    //schema query data from DB
+    Gig.find({}, function(err, gigs){
+        console.log(gigs);
         if(err) {
             console.log(err);
         } else {
-            response.send(users);
+            response.send(gigs);
         }
     });
 });
 
+
+// catch all router.get
 router.get('/*', function(request, response){
     response.sendFile(path.join(__dirname, '../public/views/index.html'));
 });

@@ -1,3 +1,10 @@
-<h1>All saved gigs should display here</h1>
+<h2>All saved gigs should display here</h2>
+<!--angular $scope.data magic-->
+<div class="backgroundGig">
+<button class=" btn-lg btn-success" ng-repeat="gig in data">{{gig.group}}</button><br>
+</div>
 
-<div ng-repeat="gig in data">{{gig.group}}</div>
+
+
+
+
