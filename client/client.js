@@ -7,6 +7,11 @@ var app = angular.module('myGigsApp',['ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider) {
     $routeProvider
+        .when('/', {
+            templateUrl: 'views/home.html',
+            controller: 'HomeController'
+        })
+
         .when('/home', {
             templateUrl: 'views/home.html',
             controller: 'HomeController'
@@ -25,16 +30,23 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 app.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
     //Ajax call to get data from DB and send to home.html
-    $http.get('/getAllGigs')
-        .then(function(response) {
-            console.log('Here is the home controller getting gigs:', response);
-            //console.log('getting users:', response.data[1].name);
-            $scope.data = response.data;
-        });
+    var fetchGigs = function() {
+        $http.get('/getAllGigs')
+            .then(function (response) {
+                console.log('Here is the home controller getting gigs:', response);
+                $scope.data = response.data;
+            });
+    };
+    $scope.removeGig = function(gig){
+        console.log('This is the gig id', gig);
+        $http.delete('/selectedGig' + gig._id)
+            .then(fetchGigs);
+    };
+    fetchGigs();
 
 }]);
 
-app.controller('newGigController', ['$scope', '$http', function($scope, $http){
+app.controller('newGigController', ['$scope', '$http','$location', function($scope, $http,$location){
 
 // $scope.sendData = event listener so page won't send empty data on load
     $scope.sendData = function(){
@@ -46,16 +58,16 @@ app.controller('newGigController', ['$scope', '$http', function($scope, $http){
             alert("Not so fast tiger! At least give us the Group Name.");
             return false;
         }
-
-
         // $http post that will be delivered by a route (index.js) into the DB
         // $scope.data acquires all inputs in one batch
         $http.post('/addGig', $scope.data)
             .then(function(response) {
+                if(response.status === 200) {
+                    $location.path('/home');
+                } else{
+                    console.log('error');
+                }
 
-                //console.log('getting myGigs:', response.data);
-                //console.log('getting users:', response.data[1].name);
-                //$scope.data = response.data;
             });
     };
 
@@ -66,8 +78,7 @@ app.controller('newGigController', ['$scope', '$http', function($scope, $http){
         $http.get('/getAllGigs')
             .then(function(response) {
                 console.log('getting myGigs:', response.data);
-                //console.log('getting users:', response.data[1].name);
-                //$scope.data = response.data;
+
             });
     };
 
@@ -80,8 +91,14 @@ app.controller('newGigController', ['$scope', '$http', function($scope, $http){
 
     };
 
-
 }]);
 
 
 
+//console.logs
+//console.log('getting users:', response.data[1].name);
+//$scope.data = response.data;
+//console.log('getting myGigs:', response.data);
+//console.log('getting users:', response.data[1].name);
+//$scope.data = response.data;
+//console.log('getting users:', response.data[1].name);

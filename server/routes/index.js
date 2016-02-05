@@ -38,6 +38,16 @@ router.get('/getAllGigs', function(request, response){
     });
 });
 
+//delete selected gig
+router.delete('/selectedGig:id', function(request, response, next){
+    //response.send("Delete!");
+    console.log(request.params.id);
+    Gig.findByIdAndRemove(request.params.id, function (err, post) {
+        response.json(post);
+    });
+    console.log("Gig has been removed");
+});
+
 
 // catch all router.get
 router.get('/*', function(request, response){

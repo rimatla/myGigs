@@ -31,7 +31,7 @@ mongoDB.on('open', function(){
 });
 
 // set up local host
-var server = app.listen(4000,function(){
+var server = app.listen(3000,function(){
     var port = server.address().port;
     console.log('listening on port:', port);
 });

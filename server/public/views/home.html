@@ -1,10 +1,21 @@
 <h2>All saved gigs should display here</h2>
 <!--angular $scope.data magic-->
-<div class="backgroundGig">
-<button class=" btn-lg btn-success" ng-repeat="gig in data">{{gig.group}}</button><br>
+<div class="backgroundGig well" ng-repeat="gig in data">
+<!--<button class=" btn-lg btn-success" ng-repeat="gig in data">-->
+    <!--{{gig.group}}<br>-->
+    <!--{{gig.eventTime | date: 'short'}}</button><br>-->
+
+<!--</div>-->
+
+<label class="radioBtn"><input type="radio" name="gigsInfo">
+    {{gig.group}}
+    {{gig.eventTime | date: 'short'}}<input type='submit' ng-click="removeGig(gig)" value='Delete' class="delete"/>
+</label>
 </div>
 
 
-
+<!--view details & delete button-->
+<button class=" btnLightBlue btn btn-info btn-lg btn-responsive" ng-click="viewDetails()">View MyGigs Details</button>
+<button class=" btnRed btn btn-danger btn-lg btn-responsive" ng-click="removeGig(gig)">Delete From MyGigs</button>
 
 
