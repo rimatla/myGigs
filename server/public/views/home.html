@@ -1,7 +1,7 @@
 <h2>All saved gigs should display here</h2>
 
 <!--angular $scope.data magic-->
-<div class="backgroundGig well" ng-repeat="gig in gigs">
+<div class="displayGig well" ng-repeat="gig in gigs">
 <!--<button class=" btn-lg btn-success" ng-repeat="gig in data">-->
     <!--{{gig.group}}<br>-->
     <!--{{gig.eventTime | date: 'short'}}</button><br>-->
@@ -9,7 +9,7 @@
 <!--</div>-->
 
     <!--check-boxes-->
-<label class="radioBtn"><input type="checkbox" name="gigsInfo" ng-model="gig.toRemove">
+<label><input type="checkbox" name="gigsInfo" ng-model="gig.toRemove">
     {{gig.group}}
     {{gig.eventTime | date: 'short'}}
     <!--{{gig.toRemove}}-->

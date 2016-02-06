@@ -42,7 +42,7 @@ app.controller('HomeController', ['$scope', '$http', '$location', function($scop
 
         for(var i = 0; i < $scope.gigs.length; i++){
             if($scope.gigs[i].toRemove){
-                $http.delete('/hi' + $scope.gigs[i]._id)
+                $http.delete('/gigDelete' + $scope.gigs[i]._id)
                     .then(fetchGigs);
             }
         }
@@ -57,7 +57,7 @@ app.controller('HomeController', ['$scope', '$http', '$location', function($scop
 app.controller('newGigController', ['$scope', '$http','$location', function($scope, $http,$location){
 
 // $scope.sendData = event listener so page won't send empty data on load
-    $scope.sendData = function(){
+    $scope.saveData = function(){
         console.log($scope.data);
 
         //form validation
