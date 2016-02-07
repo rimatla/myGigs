@@ -7,8 +7,9 @@
 <!--angular $scope.data magic-->
 <div class="displayGig well" ng-repeat="gig in gigs">
 
+
     <!--check-boxes-->
-<label><input type="checkbox" name="gigsInfo" ng-model="gig.toRemove">
+<label><input type="checkbox" name="gigsInfo" ng-model="gig.toRemove" >
     {{gig.group}}<br>
     Date: {{gig.eventTime | date: 'short'}}
     <!--{{gig.toRemove}}-->
@@ -16,7 +17,7 @@
 </div>
 
 <!--delete button-->
-<button type="submit" class=" btnRed btn btn-danger btn-lg btn-responsive" ng-click="removeSelectedGigs()">Delete From MyGigs</button>
+<button type="submit" class=" btnRed btn btn-danger btn-lg btn-responsive" ng-click="deleteSelectedGigs()">Delete From MyGigs</button>
 
 <!--view details button-->
 <a href="/detailedGig"><button class=" btnLightBlue btn btn-info btn-lg btn-responsive" ng-click="viewSelectedGigs()">View MyGigs Details</button></a>
@@ -24,8 +25,16 @@
 
 
 
+
+
+
+
+
+
+
 <!--trash-->
 <!--value='Delete' class="delete"-->
+<!--<div class="displayGig well" ng-repeat="gig in gigs | orderBy : 'date'">-->
 
 
 

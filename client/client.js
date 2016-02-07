@@ -50,7 +50,7 @@ app.controller('HomeController', ['$scope', '$http', '$location', function($scop
                 $scope.gigs = response.data;
             });
     };
-    $scope.removeSelectedGigs = function(){
+    $scope.deleteSelectedGigs = function(){
         //console.log('This is the gig id', gig);
 
         for(var i = 0; i < $scope.gigs.length; i++){
@@ -101,7 +101,6 @@ app.controller('newGigController', ['$scope', '$http','$location', function($sco
 app.controller('detailedGigController', ['$scope', '$http', '$location', function($scope, $http, $location){
 
     $scope.data = [];
-    //Ajax call to get data from DB and send to home.html
     var fetchingMoreGigs = function() {
         $http.get('/getAllGigs')
             .then(function (response) {
@@ -121,21 +120,30 @@ app.controller('detailedGigController', ['$scope', '$http', '$location', functio
 
             });
     };
-    $scope.removeSelectedGigs = function(){
+    $scope.viewSelectedGigs = function(){
         //console.log('This is the gig id', gig);
-
-        for(var i = 0; i < $scope.gigs.length; i++){
-            if($scope.gigs[i].toRemove){
-                $http.delete('/gigDelete' + $scope.gigs[i]._id)
-                    .then(fetchGigs);
+        for(var j = 0; j < $scope.gigs.length; j++){
+            if($scope.gigs[i].toSelect){
+                $http.get('/getAllGigs' + $scope.gigs[i]._id)
+                    .then(fetchingMoreGigs);
             }
-            $scope.data.group = gigs[i]._id;
         }
     };
     fetchingMoreGigs();
 
 }]);
 
+
+
+
+
+
+
+
+
+
+
+//trash
 //console.logs
 //console.log('getting users:', response.data[1].name);
 //$scope.data = response.data;
