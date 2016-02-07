@@ -1,17 +1,16 @@
+<!--add new gig-->
+<div>
+<a href="/newGig"><button class=" btnBlue pull-right btn btn-primary btn-lg btn-responsive">+ New Gig</button></a>
+</div>
 <h2>All saved gigs should display here</h2>
 
 <!--angular $scope.data magic-->
 <div class="displayGig well" ng-repeat="gig in gigs">
-<!--<button class=" btn-lg btn-success" ng-repeat="gig in data">-->
-    <!--{{gig.group}}<br>-->
-    <!--{{gig.eventTime | date: 'short'}}</button><br>-->
-
-<!--</div>-->
 
     <!--check-boxes-->
 <label><input type="checkbox" name="gigsInfo" ng-model="gig.toRemove">
-    {{gig.group}}
-    {{gig.eventTime | date: 'short'}}
+    {{gig.group}}<br>
+    Date: {{gig.eventTime | date: 'short'}}
     <!--{{gig.toRemove}}-->
 </label>
 </div>
@@ -20,7 +19,8 @@
 <button type="submit" class=" btnRed btn btn-danger btn-lg btn-responsive" ng-click="removeSelectedGigs()">Delete From MyGigs</button>
 
 <!--view details button-->
-<button class=" btnLightBlue btn btn-info btn-lg btn-responsive" ng-click="viewDetails()">View MyGigs Details</button>
+<a href="/detailedGig"><button class=" btnLightBlue btn btn-info btn-lg btn-responsive" ng-click="viewSelectedGigs()">View MyGigs Details</button></a>
+<!--ng-click="getData()"-->
 
 
 

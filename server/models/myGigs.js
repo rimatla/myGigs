@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 //schema matching ng-models
 var GigSchema = new Schema({
     group: {type: String},
+    address: {type: String},
     eventTime: {type: Date},
     endTime: {type: Date},
     goneUntil: {type: Date},
