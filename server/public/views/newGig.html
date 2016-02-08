@@ -1,7 +1,7 @@
 <!--Home & Save Button-->
 <div>
     <!--<a href="/home"><button class=" btnOrange pull-left btn btn-warning btn-lg btn-responsive">Home</button></a>-->
-    <button class=" btnGreen pull-right btn btn-success btn-lg btn-responsive" ng-click="sendData()">Save Gig</button>
+    <button class=" btnGreen pull-right btn btn-success btn-lg btn-responsive" ng-click="saveData()">Save Gig</button>
 </div>
 <br>
 
@@ -22,7 +22,7 @@
 
     </div>
     <div class="form-group">
-        <label>Address</label>
+        <label>Location</label>
         <input type="text" class="form-control" name ="address" placeholder="address"  ng-model="data.address">
 
     </div>
@@ -32,7 +32,7 @@
         <!--<span class="money">{{amount | currency}}</span>-->
     <!--</div>-->
     <div class="form-group">
-        <label>Event Time</label>
+        <label>Date & Time</label>
         <input type="datetime-local" class="form-control" name="eventTime" placeholder="date" required ng-model="data.eventTime">
     </div>
     <div class="form-group">

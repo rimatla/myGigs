@@ -1,7 +1,7 @@
 <!--edit button-->
 
 <div>
-    <button class=" btnOrange pull-right btn btn-warning btn-lg btn-responsive" ng-click="editData()">Edit Gig</button>
+    <button class=" btnOrange pull-right btn btn-warning btn-lg btn-responsive" ng-click="updateData()">Update Gig</button>
 </div>
 
 <h2>I'm gonna be the detailed gigs </h2>
@@ -13,7 +13,7 @@
 
 <!--//[][][][][[][][][][][]][][][]][][][][][]FORM & ng-model[][][][][][][][]][][][[]][][]][][]][][][]][][][][][]-->
 
-</div>
+
 <form name="form" class ="styleForm">
     <div class="form-group">
         <label>Group</label>
@@ -21,12 +21,12 @@
 
     </div>
     <div class="form-group">
-        <label>Address</label>
+        <label>Location</label>
         <input type="text" class="form-control" ng-model="data.address">
 
     </div>
     <div class="form-group">
-        <label>Event Time</label>
+        <label>Date & Time</label>
         <input type="datetime-local" class="form-control" ng-model="data.eventTime" format-date>
     </div>
     <div class="form-group">

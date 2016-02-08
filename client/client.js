@@ -12,7 +12,9 @@ var app = angular.module('myGigsApp',['ngRoute'])
         }
     }
 });
-//angular routes
+//[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][]]][]      Angular Routes                    ][][][][][[]][]][][][]][][][][][][][][]][][][][][][][[][][][][]
+
 
 app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider) {
     $routeProvider
@@ -40,7 +42,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 
 
 //HOME CONTROLLER
-app.controller('HomeController', ['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('HomeController', ['$scope', '$http', '$location', 'GigService', function($scope, $http, $location, GigService){
         $scope.data = [ ];
     //Ajax call to get data from DB and send to home.html
     var fetchGigs = function() {
@@ -54,13 +56,43 @@ app.controller('HomeController', ['$scope', '$http', '$location', function($scop
         //console.log('This is the gig id', gig);
 
         for(var i = 0; i < $scope.gigs.length; i++){
-            if($scope.gigs[i].toRemove){
+            if($scope.gigs[i].selected){
                 $http.delete('/gigDelete' + $scope.gigs[i]._id)
                     .then(fetchGigs);
             }
         }
     };
     fetchGigs();
+    $scope.viewSelectedGigs = function(){
+        console.log('This is the gig id');
+        var numSelected = getNumSelected();
+
+        if(numSelected > 1){
+            //show alert
+            alert("select just 1");
+        } else {
+            for(var j = 0; j < $scope.gigs.length; j++){
+                if($scope.gigs[j].selected){
+                    GigService.setSelectedGig($scope.gigs[j]);
+                    console.log(GigService.getSelectedGig());
+                    $location.path('detailedGig');
+                }
+            }
+        }
+
+
+        function getNumSelected(){
+            var numFound = 0;
+            for(var j = 0; j < $scope.gigs.length; j++){
+                if($scope.gigs[j].selected){
+                    numFound++;
+                }
+            }
+            return numFound;
+        }
+
+    };
+    //$scope.sortDate =
 
 }]);
 
@@ -68,10 +100,11 @@ app.controller('HomeController', ['$scope', '$http', '$location', function($scop
 
 
 //NEW GIG CONTROLLER
-app.controller('newGigController', ['$scope', '$http','$location', function($scope, $http,$location){
+app.controller('newGigController', ['$scope', '$http','$location','GigService', function($scope, $http,$location,GigService){
+
 
 // $scope.sendData = event listener so page won't send empty data on load of $http.post
-    $scope.sendData = function(){
+    $scope.saveData = function(){
         console.log($scope.data);
 
         //form validation
@@ -79,10 +112,53 @@ app.controller('newGigController', ['$scope', '$http','$location', function($sco
         if (formNotEmpty == null || formNotEmpty == "") {
             alert("Not so fast tiger! At least give us the Group Name.");
             return false;
-        }
+        };
+
+        GigService.postGigs($scope.data);
         // $http post that will be delivered by a route (index.js) into the DB
         // $scope.data acquires all inputs in one batch
-        $http.post('/addGig', $scope.data)
+        //$http.post('/addGig', $scope.data)
+        //.then(function(response) {
+        //    if(response.status === 200) {
+        //        $location.path('/home');
+        //    } else{
+        //        console.log('error');
+        //    }
+        //
+        //});
+};
+
+
+}]);
+
+
+//DETAILED GIG  CONTROLLER
+app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigService', function($scope, $http, $location, GigService){
+
+    $scope.data = GigService.getSelectedGig();
+
+    console.log(GigService.getSelectedGig());
+
+    //$scope.$watch('gig.toRemove', function(ngsDiff){
+    //    $scope.id = ngsDiff;
+    //});
+    //view selected gig
+    $scope.viewSelectedGigs = function(){
+        console.log('This is the gig id');
+        for(var j = 0; j < $scope.gigs.length; j++){
+            if($scope.gigs[i].selected){
+                GigService.setSelectedGig($scope.gig[i].selected);
+            }
+        }
+    };
+
+
+    //EDIT BUTTON
+
+    $scope.updateData = function(){
+        console.log($scope.data);
+
+        $http.post('/updateGig', $scope.data)
             .then(function(response) {
                 if(response.status === 200) {
                     $location.path('/home');
@@ -92,55 +168,53 @@ app.controller('newGigController', ['$scope', '$http','$location', function($sco
 
             });
     };
-
-
+    //fetchingMoreGigs();
 }]);
 
 
-//DETAILED GIG  CONTROLLER
-app.controller('detailedGigController', ['$scope', '$http', '$location', function($scope, $http, $location){
+//[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][]]][]      Factory              ][][][][][[]][]][][][]][][][][][][][][]][][][][][][][[][][][][]
 
-    $scope.data = [];
-    var fetchingMoreGigs = function() {
-        $http.get('/getAllGigs')
-            .then(function (response) {
-                //console.log('Here is the home controller getting gigs:', response);
-                $scope.gigs = response.data;
-                $scope.data.group = $scope.gigs[0].group;
-                $scope.data.address = $scope.gigs[0].address;
-                $scope.data.eventTime = $scope.gigs[0].eventTime;
-                $scope.data.endTime = $scope.gigs[0].endTime;
-                $scope.data.goneUntil = $scope.gigs[0].goneUntil;
-                $scope.data.todo= $scope.gigs[0].todo;
-                $scope.data.pay = $scope.gigs[0].pay;
-                $scope.data.yesCharts= $scope.gigs[0].yesCharts;
-                $scope.data.noCharts = $scope.gigs[0].noCharts;
-                $scope.data.yesPDiem = $scope.gigs[0].yesPDiem;
-                $scope.data.noPDiem = $scope.gigs[0].noPDiem;
+app.factory('GigService', ['$http','$location',function($http,$location) {
 
+    var data = {
+
+    };
+
+    var selectedGig = {};
+
+    function setSelectedGig(newSelection){
+        selectedGig = newSelection;
+    }
+
+    function getSelectedGig(){
+        return selectedGig;
+    }
+
+    var postGigs = function(data){
+        $http.post('/addGig',data)
+            .then(function(response) {
+                if(response.status === 200) {
+                    $location.path('/home');
+                } else {
+                    console.log('error');
+                }
             });
     };
-    $scope.viewSelectedGigs = function(){
-        //console.log('This is the gig id', gig);
-        for(var j = 0; j < $scope.gigs.length; j++){
-            if($scope.gigs[i].toSelect){
-                $http.get('/getAllGigs' + $scope.gigs[i]._id)
-                    .then(fetchingMoreGigs);
-            }
-        }
+    return {
+        data: data,
+        postGigs: postGigs,
+        setSelectedGig: setSelectedGig,
+        getSelectedGig: getSelectedGig,
+        selectedGig: selectedGig
     };
-    fetchingMoreGigs();
 
 }]);
 
 
 
 
-
-
-
-
-
+//$scope.data
 
 
 //trash
