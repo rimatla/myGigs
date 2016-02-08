@@ -1,2 +1,6 @@
 node_modules
 .idea
+
+# Ignore docs files
+styles/.sass-cache
+styles/.sass-cache/*
