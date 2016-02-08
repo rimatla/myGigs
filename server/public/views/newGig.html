@@ -1,19 +1,11 @@
-<!--Home & Save Button-->
+<!--Save Button-->
 <div>
     <!--<a href="/home"><button class=" btnOrange pull-left btn btn-warning btn-lg btn-responsive">Home</button></a>-->
     <button class=" btnGreen pull-right btn btn-success btn-lg btn-responsive" ng-click="saveData()">Save Gig</button>
 </div>
 <br>
 
-
-<!--scratch notes-->
-<h2 class = "addNew">Form to add new gigs</h2>
-
-
-
-
 <!--FORMS-->
-
 <!--set ng-model="data.______" to send all inputs to client in one batch -->
 <form name="form" class ="styleForm">
     <div class="form-group">
@@ -24,13 +16,8 @@
     <div class="form-group">
         <label>Location</label>
         <input type="text" class="form-control" name ="address" placeholder="address"  ng-model="data.address">
-
+        <a class="findAddress" target="_blank" ng-href="https://www.google.com/maps/place/{{data.address}}">Find Address</a>
     </div>
-    <!--<div class="form-group">-->
-        <!--<label>Pay</label>-->
-        <!--<input class="form-control currency" type="number"  placeholder="$" ng-model="amount">-->
-        <!--<span class="money">{{amount | currency}}</span>-->
-    <!--</div>-->
     <div class="form-group">
         <label>Date & Time</label>
         <input type="datetime-local" class="form-control" name="eventTime" placeholder="date" required ng-model="data.eventTime">
@@ -81,11 +68,3 @@
         </div>
     </div>
 </form>
-
-<!--triggers-->
-
-
-<!--trash-->
-<!--<button ng-click="getData()">Get Data</button>-->
-<!--<button ng-click="reset()">Reset</button>-->
-

@@ -9,7 +9,7 @@ var Gig = require('../models/myGigs');
 
 // carrying post data from client and taking over the wall to DB
 
-// DON'T MESS WITH THIS ONE
+// Post Data To DB
 router.post('/addGig', function(request, response){
     console.log(request.body);
 
@@ -27,7 +27,7 @@ router.post('/addGig', function(request, response){
 
 
 
-// DON'T MESS WITH THIS ONE
+// Get Data From DB
 router.get('/getAllGigs', function(request, response){
     //console.log(request.body);
 
@@ -42,8 +42,8 @@ router.get('/getAllGigs', function(request, response){
     });
 });
 
-//LEAVE THIS ALONE
-//delete selected gig
+
+//Delete Selected Gig
 router.delete('/gigDelete:id', function(request, response, next){
     //response.send("Delete!");
     console.log(request.params.id);
@@ -55,14 +55,12 @@ router.delete('/gigDelete:id', function(request, response, next){
 
 
 
-// JUST A TEST
+// Update Selected Gig
 router.post('/updateGig', function(request, response){
     console.log(request.body);
 
     var updatedGig = request.body;
 
-    //mongoose creates a new object based on the schema to be sent to DB
-    //request.body = data from client
     Gig.findById(request.body._id, function(err, gig){
         console.log(gig);
 
@@ -87,45 +85,13 @@ router.post('/updateGig', function(request, response){
                 console.log('error saving', err);
             }
         });
-
-
-    });
-});
-
-
-// JUST A TEST
-router.get('/selectGigs', function(request, response){
-    //console.log(request.body);
-
-    //schema query data from DB
-    Gig.find({}, function(err, gigs){
-        console.log(gigs);
-        if(err) {
-            console.log(err);
-        } else {
-            response.send(gigs);
-        }
-    });
-});
-
-// JUST A TEST
-router.get('/getMoreGigs', function(request, response){
-    //console.log(request.body);
-
-    //schema query data from DB
-    Gig.find({}, function(err, gigs){
-        console.log(gigs);
-        if(err) {
-            console.log(err);
-        } else {
-            response.send(gigs);
-        }
     });
 });
 
 
 
-// catch all router.get
+
+// Catch All router.get
 router.get('/*', function(request, response){
     response.sendFile(path.join(__dirname, '../public/views/index.html'));
 });

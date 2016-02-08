@@ -25,4 +25,3 @@ var GigSchema = new Schema({
 var myGigs = mongoose.model('Gig', GigSchema);
 
 module.exports = myGigs;
-

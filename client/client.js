@@ -40,8 +40,9 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 }]);
 
 
+//[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][]]][]      Home Controller          ][][][][][[]][]][][][]][][][][][][][][]][][][][][][][[][][][][]
 
-//HOME CONTROLLER
 app.controller('HomeController', ['$scope', '$http', '$location', 'GigService', function($scope, $http, $location, GigService){
         $scope.data = [ ];
     //Ajax call to get data from DB and send to home.html
@@ -52,6 +53,8 @@ app.controller('HomeController', ['$scope', '$http', '$location', 'GigService', 
                 $scope.gigs = response.data;
             });
     };
+
+    //Delete Gig
     $scope.deleteSelectedGigs = function(){
         //console.log('This is the gig id', gig);
 
@@ -68,8 +71,9 @@ app.controller('HomeController', ['$scope', '$http', '$location', 'GigService', 
         var numSelected = getNumSelected();
 
         if(numSelected > 1){
-            //show alert
-            alert("select just 1");
+
+            //show alert ask Nicky about it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            alert('Please select one gig at a time to view its details' );
         } else {
             for(var j = 0; j < $scope.gigs.length; j++){
                 if($scope.gigs[j].selected){
@@ -92,57 +96,44 @@ app.controller('HomeController', ['$scope', '$http', '$location', 'GigService', 
         }
 
     };
-    //$scope.sortDate =
-
 }]);
 
 
 
 
-//NEW GIG CONTROLLER
-app.controller('newGigController', ['$scope', '$http','$location','GigService', function($scope, $http,$location,GigService){
+//[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][]]][]      New Gig Controller          ][][][][][[]][]][][][]][][][][][][][][]][][][][][][][[][][][][]
 
+app.controller('newGigController', ['$scope', '$http','$location','GigService', function($scope, $http,$location,GigService){
 
 // $scope.sendData = event listener so page won't send empty data on load of $http.post
     $scope.saveData = function(){
         console.log($scope.data);
 
-        //form validation
+        //Form Validation
         var formNotEmpty = document.forms["form"]["group"].value;
         if (formNotEmpty == null || formNotEmpty == "") {
             alert("Not so fast tiger! At least give us the Group Name.");
             return false;
         };
 
+        //Triggering POST call from Factory
         GigService.postGigs($scope.data);
-        // $http post that will be delivered by a route (index.js) into the DB
-        // $scope.data acquires all inputs in one batch
-        //$http.post('/addGig', $scope.data)
-        //.then(function(response) {
-        //    if(response.status === 200) {
-        //        $location.path('/home');
-        //    } else{
-        //        console.log('error');
-        //    }
-        //
-        //});
 };
-
 
 }]);
 
 
-//DETAILED GIG  CONTROLLER
+//[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][][][][][][][]
+//[][][][][][][][][][][][][][][][][][][][][][][][][][][]]][]      Detailed Gig Controller          ][][][][][[]][]][][][]][][][][][][][][]][][][][][][][[][][][][]
+
 app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigService', function($scope, $http, $location, GigService){
 
     $scope.data = GigService.getSelectedGig();
-
     console.log(GigService.getSelectedGig());
 
-    //$scope.$watch('gig.toRemove', function(ngsDiff){
-    //    $scope.id = ngsDiff;
-    //});
-    //view selected gig
+
+    //View Selected Gig
     $scope.viewSelectedGigs = function(){
         console.log('This is the gig id');
         for(var j = 0; j < $scope.gigs.length; j++){
@@ -153,8 +144,7 @@ app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigSer
     };
 
 
-    //EDIT BUTTON
-
+    //Update Gig
     $scope.updateData = function(){
         console.log($scope.data);
 
@@ -168,8 +158,10 @@ app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigSer
 
             });
     };
-    //fetchingMoreGigs();
 }]);
+
+
+
 
 
 //[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][
@@ -210,18 +202,3 @@ app.factory('GigService', ['$http','$location',function($http,$location) {
     };
 
 }]);
-
-
-
-
-//$scope.data
-
-
-//trash
-//console.logs
-//console.log('getting users:', response.data[1].name);
-//$scope.data = response.data;
-//console.log('getting myGigs:', response.data);
-//console.log('getting users:', response.data[1].name);
-//$scope.data = response.data;
-//console.log('getting users:', response.data[1].name);
