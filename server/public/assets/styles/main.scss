@@ -1,6 +1,21 @@
+a:link {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+
+.page-header h1:hover {
+  color: black ;
+  text-decoration: none;
+}
+
+.page-header h1:visited {
+  color: white;
+}
 .page-header h1 {
   font-family:  "Monoton", Monoton,"Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-  font-size: 52px;
+  font-size: 75px;
   padding: 40px 50px;
   color: white;
   text-align: center;
@@ -43,6 +58,37 @@
   }
 }
 
+
+
+//glyphcons
+.glyPig {
+  color:#FFA9BD;
+  font-size:19px;
+}
+
+.glyDel{
+  top: 3px;
+  padding-left: 2%;
+}
+
+.glyView{
+  top: 3px;
+  padding-left: 2%;
+  font-weight: bold;
+}
+.gly {
+  display: block;
+}
+
+.gly:before {
+  content:  "\e008";
+  font-family: 'Glyphicons Halflings';
+  font-size: 15px;
+  float: left;
+  margin-top: 8px;
+  margin-left: -20px;
+  color: black;
+}
 body{
   margin-bottom: 5%;
   background-color: gray;
@@ -63,11 +109,16 @@ h2{
 .btnBlue {
 
   margin-right: 1%;
+  font-size:20px;
+  font-weight:400;
 
 }
 
 .btnOrange {
   margin-right: 1%;
+  font-size:20px;
+  font-weight:400;
+  float: right;
 
 }
 
@@ -75,16 +126,63 @@ h2{
   text-align: center;
   margin-top: 3%;
   margin-left: 44%;
+  font-size:24px;
 }
 
 .btnLightBlue{
   text-align: center;
   margin-top: 4%;
   margin-left: 44%;
+  font-size:24px;
+  color: #ffffff;
+  background-color: #257D85;
+  border-color: #287F85;
+}
+.btnLightBlue:hover,
+.btnLightBlue:focus,
+.btnLightBlue:active,
+.btnLightBlue.active,
+.open .dropdown-toggle.btnLightBlue {
+  color: #ffffff;
+  background-color: #0E596E;
+  border-color: #287F85;
+}
+
+.btnLightBlue:active,
+.btnLightBlue.active,
+.open .dropdown-toggle.btnLightBlue {
+  background-image: none;
+}
+
+.btnLightBlue.disabled,
+.btnLightBlue[disabled],
+fieldset[disabled] .btnLightBlue,
+.btnLightBlue.disabled:hover,
+.btnLightBlue[disabled]:hover,
+fieldset[disabled] .btnLightBlue:hover,
+.btnLightBlue.disabled:focus,
+.btnLightBlue[disabled]:focus,
+fieldset[disabled] .btnLightBlue:focus,
+.btnLightBlue.disabled:active,
+.btnLightBlue[disabled]:active,
+fieldset[disabled] .btnLightBlue:active,
+.btnLightBlue.disabled.active,
+.btnLightBlue[disabled].active,
+fieldset[disabled] .btnLightBlue.active {
+  background-color: #257D85;
+  border-color: #287F85;
+}
+
+.btnLightBlue .badge {
+  color: #257D85;
+  background-color: #ffffff;
 }
 
 .btnGreen{
   margin-right: 1%;
+  font-size:20px;
+  font-weight:400;
+
 
 }
 
@@ -100,10 +198,12 @@ h2{
 
 }
 .findAddress{
+  font-font: Neue Helvetica ;
   position: absolute;
-  top:20px;
+  top:12px;
   right:30px;
   text-decoration: none;
+  margin-top: 1.5%;
 }
 .displayGig {
   background-color:whitesmoke;
@@ -116,7 +216,13 @@ h2{
   padding-right: 1%;
   padding-left: 1%;
 }
+.datePTag{
+  width: 150%;
+  padding-top: 4%;
+  padding-left: 9%;
+}
 .styleForm{
+  float: left;
   margin-top: 2%;
   margin-right: 12%;
   margin-left: 12%;
@@ -152,6 +258,12 @@ h2{
 
 
 @media only screen and (max-width: 800px) {
+
+  .page-header h1:hover {
+    color:lightsalmon;
+    text-decoration: none;
+  }
+
   body {
     background-color:#130034;
   }

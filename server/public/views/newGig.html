@@ -1,7 +1,7 @@
 <!--Save Button-->
 <div>
     <!--<a href="/home"><button class=" btnOrange pull-left btn btn-warning btn-lg btn-responsive">Home</button></a>-->
-    <button class=" btnGreen pull-right btn btn-success btn-lg btn-responsive" ng-click="saveData()">Save Gig</button>
+    <button class=" btnGreen pull-right btn btn-success btn-lg btn-responsive" ng-click="saveData()"><span class="glyphicon glyphicon-save"></span> Save Gig</button>
 </div>
 <br>
 
@@ -9,15 +9,17 @@
 <!--set ng-model="data.______" to send all inputs to client in one batch -->
 <form name="form" class ="styleForm">
     <label>Group</label>
-    <div class="inner-addon left-addon">
-        <i class="glyphicon glyphicon-user"></i>
+    <span class="glyphicon glyphicon-user gly" aria-hidden="true"></span>
         <input type="text" class="form-control" name ="group" placeholder="group"  ng-model="data.group" required>
+
+    <!--<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>-->
 
     </div>
     <div class="form-group">
         <label>Location</label>
         <input type="text" class="form-control" name ="address" placeholder="address"  ng-model="data.address">
-        <a class="findAddress" target="_blank" ng-href="https://www.google.com/maps/place/{{data.address}}">Find Address</a>
+        <a class="findAddress" target="_blank" ng-href="https://www.google.com/maps/place/{{data.address}}">
+            Directions<span class="glyphicon glyphicon-map-marker glyMap"></span></a>
     </div>
     <div class="form-group">
         <label>Date & Time</label>
@@ -37,11 +39,13 @@
     </div>
 <hr>
      <!--Pay-->
+    <span class="glyphicon glyphicon-piggy-bank glyPig"></span>
     <label>Pay</label>
     <div class="input-group">
         <span class="input-group-addon">$</span>
         <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" ng-model="data.pay">
         <span class="input-group-addon">.00</span>
+
     </div>
 
 

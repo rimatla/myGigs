@@ -1,7 +1,7 @@
 /**
  * Created by acoelho on 2/2/16.
  */
-var app = angular.module('myGigsApp',['ngRoute'])
+var app = angular.module('myGigsApp',['ngRoute','ngCookies'])
 .directive("formatDate", function(){
     return {
         require: 'ngModel',
@@ -69,11 +69,12 @@ app.controller('HomeController', ['$scope', '$http', '$location', 'GigService', 
     $scope.viewSelectedGigs = function(){
         console.log('This is the gig id');
         var numSelected = getNumSelected();
-
-        if(numSelected > 1){
-
-            //show alert ask Nicky about it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            alert('Please select one gig at a time to view its details' );
+        //show alert ask Nicky about it!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(numSelected == 0){
+            alert('Please select one gig to view its details.' );
+        }
+        else if(numSelected > 1){
+            alert('Please select one gig at a time to view its details.' );
         } else {
             for(var j = 0; j < $scope.gigs.length; j++){
                 if($scope.gigs[j].selected){
@@ -127,10 +128,10 @@ app.controller('newGigController', ['$scope', '$http','$location','GigService', 
 //[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][][][][][][][]
 //[][][][][][][][][][][][][][][][][][][][][][][][][][][]]][]      Detailed Gig Controller          ][][][][][[]][]][][][]][][][][][][][][]][][][][][][][[][][][][]
 
-app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigService', function($scope, $http, $location, GigService){
+app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigService','$cookies', function($scope, $http, $location, GigService,$cookies){
 
     $scope.data = GigService.getSelectedGig();
-    console.log(GigService.getSelectedGig());
+
 
 
     //View Selected Gig
@@ -142,6 +143,8 @@ app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigSer
             }
         }
     };
+
+
 
 
     //Update Gig
@@ -167,20 +170,27 @@ app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigSer
 //[][][][][][][][][]]][]][][][][][][][][][][][][][][][][][][][][][][][]][][][][][][][][][]][][][][][][[][][][][][][][]][][][][][][][][][][][][[][][][
 //[][][][][][][][][][][][][][][][][][][][][][][][][][][]]][]      Factory              ][][][][][[]][]][][][]][][][][][][][][]][][][][][][][[][][][][]
 
-app.factory('GigService', ['$http','$location',function($http,$location) {
+app.factory('GigService', ['$http','$location','$cookies',function($http,$location,$cookies) {
 
-    var data = {
-
-    };
+    var data = { };
 
     var selectedGig = {};
 
     function setSelectedGig(newSelection){
         selectedGig = newSelection;
+
+        //$cookies stringify to keep data on reload
+        //console.log(newSelection);
+        $cookies.put('selection',JSON.stringify(newSelection));
     }
 
+
     function getSelectedGig(){
-        return selectedGig;
+        //return selectedGig;
+
+        //$cookies parse to keep data on reload
+        //console.log("Getting:", JSON.stringify($cookies.get('selection')));
+        return JSON.parse($cookies.get('selection'));
     }
 
     var postGigs = function(data){
@@ -193,6 +203,8 @@ app.factory('GigService', ['$http','$location',function($http,$location) {
                 }
             });
     };
+
+
     return {
         data: data,
         postGigs: postGigs,
@@ -200,5 +212,7 @@ app.factory('GigService', ['$http','$location',function($http,$location) {
         getSelectedGig: getSelectedGig,
         selectedGig: selectedGig
     };
+
+
 
 }]);

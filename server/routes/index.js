@@ -74,11 +74,37 @@ router.post('/updateGig', function(request, response){
             gig.group = updatedGig.group;
         }
 
-        //if(gig.group != updatedGig.group){
-        //    gig.group = updatedGig.group;
-        //}
+        if(gig.address != updatedGig.address){
+            gig.address= updatedGig.address;
+        }
+        if(gig.eventTime != updatedGig.eventTime){
+            gig.eventTime = updatedGig.eventTime;
+        }
+        if(gig.endTime != updatedGig.endTime){
+            gig.endTime = updatedGig.endTime;
+        }
+        if(gig.goneUntil != updatedGig.goneUntil){
+            gig.goneUntil = updatedGig.goneUntil;
+        }
+        if(gig.todo != updatedGig.todo){
+            gig.todo = updatedGig.todo;
+        }
+        if(gig.pay != updatedGig.pay){
+            gig.pay = updatedGig.pay;
+        }
+        if(gig.yesCharts != updatedGig.yesCharts){
+            gig.yesCharts = updatedGig.yesCharts;
+        }
+        if(gig.noCharts != updatedGig.noCharts){
+            gig.noCharts = updatedGig.noCharts;
+        }
+        if(gig.yesPDiem != updatedGig.yesPDiem){
+            gig.yesPDiem = updatedGig.yesPDiem;
 
-        //done
+        } if(gig.noPDiem != updatedGig.noPDiem){
+            gig.noPDiem = updatedGig.noPDiem;
+        }
+        //done!!
 
         gig.save(function(err){
             if(err){

@@ -30,9 +30,13 @@ module.exports = function(grunt) {
                     "angular/angular.min.js.map",
                     "angular-route/angular-route.min.js",
                     "angular-route/angular-route.min.js.map",
+                    "angular-cookies/angular-cookies.min.js",
+                    "angular-cookies/angular-cookies.min.js.map",
                     "angular/angular-csp.css",
                     "bootstrap/dist/css/bootstrap.min.css",
-                    "bootstrap/dist/css/bootstrap.min.css.map"
+                    "bootstrap/dist/css/bootstrap.min.css.map",
+                    "bootstrap/*.*",
+                    "bootstrap/**/*.*"
                 ],
 
                 "dest": "server/public/vendor/"
