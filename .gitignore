@@ -2,6 +2,5 @@ node_modules/
 .idea/
 .sass-cache/
 .DS_STORE/
-npm-debug.log
 .sass-cache/*
 

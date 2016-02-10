@@ -39,15 +39,15 @@ mongoDB.on('open', function(){
 
 
 //heroku + mongolab
-//var server = app.listen(process.env.PORT || 5000, function(){
-//    var port = server.address().port;
-//    console.log('listening on port', port);
-//});
-
-
- set up local host
-var server = app.listen(3000,function(){
+var server = app.listen(process.env.PORT || 5000, function(){
     var port = server.address().port;
-    console.log('listening on port:', port);
+    console.log('listening on port', port);
 });
+
+
+ //set up local host
+//var server = app.listen(3000,function(){
+//    var port = server.address().port;
+//    console.log('listening on port:', port);
+//});
 
