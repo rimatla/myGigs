@@ -1,7 +1,8 @@
 <!--Save Button-->
 <div>
     <!--<a href="/home"><button class=" btnOrange pull-left btn btn-warning btn-lg btn-responsive">Home</button></a>-->
-    <button class=" btnGreen pull-right btn btn-success btn-lg btn-responsive" ng-click="saveData()"><span class="glyphicon glyphicon-save"></span> Save Gig</button>
+    <button class=" btnGreen pull-right btn btn-success btn-lg btn-responsive" ng-click="saveData()">
+        <span class="glyphicon glyphicon-save"></span> Save Gig</button>
 </div>
 <br>
 
@@ -9,7 +10,6 @@
 <!--set ng-model="data.______" to send all inputs to client in one batch -->
 <form name="form" class ="styleForm">
     <label>Group</label>
-    <span class="glyphicon glyphicon-user gly" aria-hidden="true"></span>
         <input type="text" class="form-control" name ="group" placeholder="group"  ng-model="data.group" required>
 
     <!--<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>-->

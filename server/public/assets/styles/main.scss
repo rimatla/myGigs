@@ -1,3 +1,6 @@
+// [][][][][][][]][][]][][][][][][][][][][]][  Link  [][[][][][][][][[[][][]][][][][][]
+
+
 a:link {
   text-decoration: none;
 }
@@ -5,6 +8,8 @@ a:active {
   text-decoration: none;
 }
 
+
+// [][][][][][][]][][]][][][][][][][][][][]][  Header  [][[][][][][][][[[][][]][][][][]
 .page-header h1:hover {
   color: black ;
   text-decoration: none;
@@ -59,8 +64,8 @@ a:active {
 }
 
 
+// [][][][][][][]][][]][][][][][][][][][][]][  Glyphicons  [][[][][][][][][[[][][]][][][
 
-//glyphcons
 .glyPig {
   color:#FFA9BD;
   font-size:19px;
@@ -89,37 +94,118 @@ a:active {
   margin-left: -20px;
   color: black;
 }
+
+
+// [][][][][][][]][][]][][][][][][][][][][]][  Home  [][[][][][][][][[[][][]][][][
+
 body{
   margin-bottom: 5%;
   background-color: gray;
-  font-size: 19px;
 }
 
-h2{
-  text-align: center;
+.namePTag{
+  font-size: 18px;
 }
 
 .datePTag{
-
-  width: 105%;
+  width: 150%;
   padding-top: 4%;
   padding-left: 9%;
 }
 
-.btnBlue {
+.checkMe{
+  width: 15px;
+  height: 15px;
+}
 
+.displayGig {
+  background-color:whitesmoke;
+  width: 44% ;
+  margin-right: 30%;
+  margin-top: 3%;
+  margin-left: 29%;
+  padding-top: 1.5%;
+  padding-bottom: 1%;
+  padding-right: 1%;
+  padding-left: 1%;
+}
+
+// [][][][][][][]][][]][][][][][][][][][][]][  Detailed Gig  [][[][][][][][][[[][][]][][
+
+
+.detailedGig{
+  margin-top: 1%;
+  margin-right: 35%;
+  margin-left: 39%;
+  padding-bottom: 20%;
+}
+
+// [][][][][][][]][][]][][][][][][][][][][]][  Add Gig  [][[][][][][][][[[][][]][][]][]
+.findAddress{
+  font-font: Neue Helvetica ;
+  position: absolute;
+  top:12px;
+  right:30px;
+  text-decoration: none;
+  margin-top: 1.5%;
+}
+
+.form-group{
+  position: relative;
+}
+
+
+.styleForm{
+  float: left;
+  margin-top: 2%;
+  margin-right: 12%;
+  margin-left: 12%;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  padding-right: 3%;
+  padding-left: 3%;
+  background-color: whitesmoke;
+  text-align: center;
+}
+//.addNew{
+//  text-align: center;
+//}
+
+.radioBtn{
+  margin-right: 2%;
+  padding: 1%;
+}
+
+.input-group{
+  margin-right: 40%;
+  margin-left: 40%;
+}
+
+// [][][][][][][]][][]][][][][][][][][][][]][  Buttons  [][[][][][][][][[[][][]][][][]
+
+.btnBlue {
   margin-right: 1%;
   font-size:20px;
   font-weight:400;
-
 }
+
+.btnLightBlue .badge {
+  color: #257D85;
+  background-color: #ffffff;
+}
+
+.btnGreen{
+  margin-right: 1%;
+  font-size:20px;
+  font-weight:400;
+}
+
 
 .btnOrange {
   margin-right: 1%;
   font-size:20px;
   font-weight:400;
   float: right;
-
 }
 
 .btnRed{
@@ -147,13 +233,11 @@ h2{
   background-color: #0E596E;
   border-color: #287F85;
 }
-
 .btnLightBlue:active,
 .btnLightBlue.active,
 .open .dropdown-toggle.btnLightBlue {
   background-image: none;
 }
-
 .btnLightBlue.disabled,
 .btnLightBlue[disabled],
 fieldset[disabled] .btnLightBlue,
@@ -171,79 +255,6 @@ fieldset[disabled] .btnLightBlue:active,
 fieldset[disabled] .btnLightBlue.active {
   background-color: #257D85;
   border-color: #287F85;
-}
-
-.btnLightBlue .badge {
-  color: #257D85;
-  background-color: #ffffff;
-}
-
-.btnGreen{
-  margin-right: 1%;
-  font-size:20px;
-  font-weight:400;
-
-
-}
-
-.detailedGig{
-  margin-top: 1%;
-  margin-right: 35%;
-  margin-left: 39%;
-  padding-bottom: 20%;
-}
-
-.form-group{
-  position: relative;
-
-}
-.findAddress{
-  font-font: Neue Helvetica ;
-  position: absolute;
-  top:12px;
-  right:30px;
-  text-decoration: none;
-  margin-top: 1.5%;
-}
-.displayGig {
-  background-color:whitesmoke;
-  width: 44% ;
-  margin-right: 30%;
-  margin-top: 3%;
-  margin-left: 29%;
-  padding-top: 1.5%;
-  padding-bottom: 1%;
-  padding-right: 1%;
-  padding-left: 1%;
-}
-.datePTag{
-  width: 150%;
-  padding-top: 4%;
-  padding-left: 9%;
-}
-.styleForm{
-  float: left;
-  margin-top: 2%;
-  margin-right: 12%;
-  margin-left: 12%;
-  padding-top: 2%;
-  padding-bottom: 3%;
-  padding-right: 3%;
-  padding-left: 3%;
-  background-color: whitesmoke;
-  text-align: center;
-}
-.addNew{
-  text-align: center;
-}
-.radioBtn{
-  margin-right: 2%;
-  padding: 1%;
-}
-
-.input-group{
-  margin-right: 40%;
-  margin-left: 40%;
 }
 
 

@@ -8,12 +8,14 @@
 <div class="displayGig well" ng-repeat="gig in gigs | orderBy:'+eventTime'">
     <!--check-boxes-->
 <label>
-    <input type="checkbox" name="gigsInfo" ng-model="gig.selected">
-    {{gig.group}}<br>
+    <input class="checkMe" type="checkbox" name="gigsInfo" ng-model="gig.selected">
+    <span class="namePTag">{{gig.group}}</span><br>
     <p class="datePTag">Date: {{gig.eventTime | date: 'short'}}</p>
 </label>
 </div>
 
 <!--View Details & Delete Button-->
-<button class=" btnLightBlue btn btn-info btn-lg btn-responsive" ng-click="viewSelectedGigs()">View MyGigs Details  <span class="glyphicon glyphicon-thumbs-up glyView"></span></button>
-<button type="submit" class=" btnRed btn btn-danger btn-lg btn-responsive" ng-click="deleteSelectedGigs()">Delete From MyGigs   <span class="glyphicon glyphicon-remove glyDel"></span></button>
+<button class=" btnLightBlue btn btn-info btn-lg btn-responsive" ng-click="viewSelectedGigs()">View MyGigs Details
+    <span class="glyphicon glyphicon-share-alt glyView"></span></button>
+<button type="submit" class=" btnRed btn btn-danger btn-lg btn-responsive" ng-click="deleteSelectedGigs()">Delete From MyGigs
+    <span class="glyphicon glyphicon-remove glyDel"></span></button>
