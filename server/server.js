@@ -16,14 +16,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', index);
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+//var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // MONGO set-up
 // creates a DB
-var mongoURI = 'mongodb://localhost:27017/myGigs';
+//var mongoURI = 'mongodb://localhost:27017/myGigs';
 
 //Heroku + MongoLab
-//    var mongoURI = 'mongodb://rimatla13:sparta13@ds061395.mongolab.com:61395/mygigs';
+    var mongoURI = 'mongodb://rimatla:gigs@ds061345.mongolab.com:61345/gigsmy';
     var mongoDB = mongoose.connect(mongoURI).connection;
 
 
@@ -39,15 +39,15 @@ mongoDB.on('open', function(){
 
 
 //heroku + mongolab
-//var server = app.listen(process.env.PORT || 5000, function(){
-//    var port = server.address().port;
-//    console.log('listening on port', port);
-//});
+var server = app.listen(process.env.PORT || 3000, function(){
+    var port = server.address().port;
+    console.log('listening on port', port);
+});
 
 
  //set up local host
-var server = app.listen(3000,function(){
-    var port = server.address().port;
-    console.log('listening on port:', port);
-});
+//var server = app.listen(3000,function(){
+//    var port = server.address().port;
+//    console.log('listening on port:', port);
+//});
 
