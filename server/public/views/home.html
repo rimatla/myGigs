@@ -7,11 +7,11 @@
 <!--Angular $scope.data Magic-->
 <div class="displayGig well" ng-repeat="gig in gigs | orderBy:'+eventTime'">
     <!--check-boxes-->
-<label>
-    <input class="checkMe" type="checkbox" name="gigsInfo" ng-model="gig.selected">
-    <span class="namePTag">{{gig.group}}</span><br>
-    <p class="datePTag">Date: {{gig.eventTime | date: 'short'}}</p>
-</label>
+    <label>
+        <input class="checkMe" type="checkbox" name="gigsInfo" ng-model="gig.selected">
+        <span class="namePTag">{{gig.group}}</span><br>
+            <p class="datePTag">Date: {{gig.eventTime | date: 'short'}}</p>
+    </label>
 </div>
 
 <!--View Details & Delete Button-->

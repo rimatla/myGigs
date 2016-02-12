@@ -13,10 +13,10 @@ var GigSchema = new Schema({
     goneUntil: {type: Date},
     todo: {type: String},
     pay: {type: Number},
-    yesCharts: {type: Boolean},
-    noCharts: {type: Boolean},
-    yesPDiem: {type: Boolean},
-    noPDiem: {type: Boolean}
+    //yesCharts: {type: Boolean},
+    Charts: {type: Boolean},
+    PDiem: {type: Boolean}
+    //noPDiem: {type: Boolean}
 
 });
 

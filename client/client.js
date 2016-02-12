@@ -1,13 +1,15 @@
 /**
  * Created by acoelho on 2/2/16.
  */
+
 var app = angular.module('myGigsApp',['ngRoute','ngCookies'])
-.directive("formatDate", function(){
+app.directive("formatDate", function(){
     return {
         require: 'ngModel',
         link: function(scope, elem, attr, detailedGigController) {
             detailedGigController.$formatters.push(function(modelValue){
-                return new Date(modelValue);
+                    return new Date (modelValue);
+
             })
         }
     }
@@ -114,13 +116,14 @@ app.controller('newGigController', ['$scope', '$http','$location','GigService', 
         //Form Validation
         var formNotEmpty = document.forms["form"]["group"].value;
         if (formNotEmpty == null || formNotEmpty == "") {
-            alert("Not so fast tiger! At least give us the Group Name.");
+            alert("Please type at least the Group Name.");
             return false;
         };
 
         //Triggering POST call from Factory
         GigService.postGigs($scope.data);
 };
+
 
 }]);
 
@@ -131,8 +134,6 @@ app.controller('newGigController', ['$scope', '$http','$location','GigService', 
 app.controller('detailedGigController', ['$scope', '$http', '$location', 'GigService','$cookies', function($scope, $http, $location, GigService,$cookies){
 
     $scope.data = GigService.getSelectedGig();
-
-
 
     //View Selected Gig
     $scope.viewSelectedGigs = function(){
@@ -212,7 +213,5 @@ app.factory('GigService', ['$http','$location','$cookies',function($http,$locati
         getSelectedGig: getSelectedGig,
         selectedGig: selectedGig
     };
-
-
 
 }]);

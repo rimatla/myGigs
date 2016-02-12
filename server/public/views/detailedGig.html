@@ -52,8 +52,8 @@
         <div>
 
             <!--set radio button w/ ng-value= 'true' so it reads properly on DB-->
-            <label class="radioBtn"><input type="radio" name="charts" ng-model="data.yesCharts"  ng-value="true">Yes</label>
-            <label><input type="radio" name="charts" ng-model="data.noCharts" ng-value="true">No</label>
+            <label class="detRadioBtn"><input type="radio" name="charts" ng-model="data.Charts"  ng-value="true">Yes</label>
+            <label><input type="radio" name="charts" ng-model="data.Charts" ng-value="false">No</label>
         </div>
     </div>
 
@@ -61,10 +61,9 @@
     <div class="form-group">
         <label>Per Diem</label>
         <div>
-
             <!--set radio button w/ ng-value= 'true' so it reads properly on DB-->
-            <label class="radioBtn"><input type="radio" name="perDiem" ng-model="data.yesPDiem" ng-value="true">Yes</label>
-            <label><input type="radio" name="perDiem" ng-model="data.noPDiem" ng-value="true">No</label>
+            <label class="detRadioBtn"><input type="radio" name="perDiem" ng-model="data.PDiem" ng-value="true">Yes</label>
+            <label><input type="radio" name="perDiem" ng-model="data.PDiem" ng-value="false">No</label>
         </div>
     </div>
 </form>

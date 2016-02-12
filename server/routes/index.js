@@ -92,18 +92,19 @@ router.post('/updateGig', function(request, response){
         if(gig.pay != updatedGig.pay){
             gig.pay = updatedGig.pay;
         }
-        if(gig.yesCharts != updatedGig.yesCharts){
-            gig.yesCharts = updatedGig.yesCharts;
+        //if(gig.yesCharts != updatedGig.yesCharts){
+        //    gig.yesCharts = updatedGig.yesCharts;
+        //}
+        if(gig.Charts != updatedGig.Charts){
+            gig.Charts = updatedGig.Charts;
         }
-        if(gig.noCharts != updatedGig.noCharts){
-            gig.noCharts = updatedGig.noCharts;
-        }
-        if(gig.yesPDiem != updatedGig.yesPDiem){
-            gig.yesPDiem = updatedGig.yesPDiem;
+        if(gig.PDiem != updatedGig.PDiem){
+            gig.PDiem = updatedGig.PDiem;
 
-        } if(gig.noPDiem != updatedGig.noPDiem){
-            gig.noPDiem = updatedGig.noPDiem;
         }
+        //if(gig.noPDiem != updatedGig.noPDiem){
+        //    gig.noPDiem = updatedGig.noPDiem;
+        //}
         //done!!
 
         gig.save(function(err){
