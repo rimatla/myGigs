@@ -1,15 +1,13 @@
 /**
  * Created by acoelho on 2/2/16.
  */
-
 var app = angular.module('myGigsApp',['ngRoute','ngCookies'])
-
 app.directive("formatDate", function(){
     return {
         require: 'ngModel',
         link: function(scope, elem, attr, detailedGigController) {
             detailedGigController.$formatters.push(function(modelValue){
-                    return new Date (modelValue);
+                return new Date (modelValue);
 
             })
         }
