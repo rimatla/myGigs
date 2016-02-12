@@ -21,10 +21,10 @@ app.use('/', index);
 
 // MONGO set-up
 // creates a DB
-var mongoURI = 'mongodb://localhost:27017/myGigs';
+//var mongoURI = 'mongodb://localhost:27017/myGigs';
 
 //Heroku + MongoLab
-//    var mongoURI = 'mongodb://rimatla:gigs@ds061345.mongolab.com:61345/gigsmy';
+    var mongoURI = 'mongodb://rimatla:gigs@ds061345.mongolab.com:61345/gigsmy';
     var mongoDB = mongoose.connect(mongoURI).connection;
 
 

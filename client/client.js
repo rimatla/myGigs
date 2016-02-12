@@ -3,6 +3,7 @@
  */
 
 var app = angular.module('myGigsApp',['ngRoute','ngCookies'])
+
 app.directive("formatDate", function(){
     return {
         require: 'ngModel',
